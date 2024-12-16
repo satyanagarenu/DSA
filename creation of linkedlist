@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *next;
+} *first = NULL;
+
+void create(int k) {
+    struct node *t, *last;
+    t = (struct node *)malloc(sizeof(struct node));
+    t->data = k;
+    t->next = NULL;
+
+    if (first == NULL) {
+        first = last = t;
+    } else {
+        last->next = t;
+        last = t;
+    }
+
+    display(first);
+}
+
+void display(struct node *k) {
+    while (k != NULL) {
+        printf("%d ", k->data);
+        k = k->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    create(10);
+    create(20);
+    create(30);
+
+    return 0;
+}
